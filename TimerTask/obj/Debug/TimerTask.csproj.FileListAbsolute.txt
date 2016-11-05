@@ -1,0 +1,17 @@
+D:\Users\ss\Documents\Visual Studio 2013\Projects\TimerTask\TimerTask\bin\Debug\TimerTask.exe.config
+D:\Users\ss\Documents\Visual Studio 2013\Projects\TimerTask\TimerTask\bin\Debug\TimerTask.exe
+D:\Users\ss\Documents\Visual Studio 2013\Projects\TimerTask\TimerTask\bin\Debug\TimerTask.pdb
+D:\Users\ss\Documents\Visual Studio 2013\Projects\TimerTask\TimerTask\obj\Debug\TimerTask.csprojResolveAssemblyReference.cache
+D:\Users\ss\Documents\Visual Studio 2013\Projects\TimerTask\TimerTask\obj\Debug\Unit\ItemMini.baml
+D:\Users\ss\Documents\Visual Studio 2013\Projects\TimerTask\TimerTask\obj\Debug\MainWindow.baml
+D:\Users\ss\Documents\Visual Studio 2013\Projects\TimerTask\TimerTask\obj\Debug\Unit\ItemMini.g.cs
+D:\Users\ss\Documents\Visual Studio 2013\Projects\TimerTask\TimerTask\obj\Debug\MainWindow.g.cs
+D:\Users\ss\Documents\Visual Studio 2013\Projects\TimerTask\TimerTask\obj\Debug\App.g.cs
+D:\Users\ss\Documents\Visual Studio 2013\Projects\TimerTask\TimerTask\obj\Debug\TimerTask_MarkupCompile.cache
+D:\Users\ss\Documents\Visual Studio 2013\Projects\TimerTask\TimerTask\obj\Debug\TimerTask.g.resources
+D:\Users\ss\Documents\Visual Studio 2013\Projects\TimerTask\TimerTask\obj\Debug\TimerTask.Properties.Resources.resources
+D:\Users\ss\Documents\Visual Studio 2013\Projects\TimerTask\TimerTask\obj\Debug\TimerTask.csproj.GenerateResource.Cache
+D:\Users\ss\Documents\Visual Studio 2013\Projects\TimerTask\TimerTask\obj\Debug\TimerTask.exe
+D:\Users\ss\Documents\Visual Studio 2013\Projects\TimerTask\TimerTask\obj\Debug\TimerTask.pdb
+D:\Users\ss\Documents\Visual Studio 2013\Projects\TimerTask\TimerTask\obj\Debug\Detail.baml
+D:\Users\ss\Documents\Visual Studio 2013\Projects\TimerTask\TimerTask\obj\Debug\Detail.g.cs
