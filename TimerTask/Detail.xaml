@@ -65,12 +65,26 @@
                     Focusable="False" />
         </StackPanel>
         <StackPanel Grid.Row="1">
-            <Label Content="执行：" />
-            <TextBox x:Name="PathTextBox"
-                     Margin="10,0"
-                     VerticalContentAlignment="Center"
-                     LostFocus="PathTextBox_OnLostFocus"
-                     MouseDoubleClick="PathTextBox_OnMouseDoubleClick" />
+            <DockPanel>
+                <Label x:Name="PathLabel"
+                       Width="{Binding ActualWidth,
+                                       ElementName=label,
+                                       Mode=OneWay}"
+                       Content="执行路径：" />
+                <TextBox x:Name="PathTextBox"
+                         Margin="10,0"
+                         VerticalContentAlignment="Center"
+                         LostFocus="PathTextBox_OnLostFocus"
+                         MouseDoubleClick="PathTextBox_OnMouseDoubleClick" />
+            </DockPanel>
+            <DockPanel Margin="0,3">
+                <Label Width="{Binding ActualWidth, ElementName=PathLabel, Mode=OneWay}" Content="参数：" />
+                <TextBox x:Name="ParamsTextBox"
+                         Margin="10,0"
+                         VerticalContentAlignment="Center"
+                         LostFocus="PathTextBox_OnLostFocus"
+                         MouseDoubleClick="PathTextBox_OnMouseDoubleClick" />
+            </DockPanel>
             <Label Content="说明:" />
             <TextBox x:Name="NoteTextBox"
                      Background="Transparent"

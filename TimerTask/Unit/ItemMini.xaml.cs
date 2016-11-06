@@ -80,7 +80,7 @@ namespace TimerTask.Unit
 
             Process process = new Process(); 
             ProcessStartInfo startInfo = new ProcessStartInfo(); 
-            startInfo.FileName = "cmd.exe"; 
+            startInfo.FileName = "cmd.exe";
             startInfo.Arguments = "/C " + "shutdown -s -f";
 
             if (proc != null) Console.WriteLine(@"当前线程Id: " + proc.Id);
