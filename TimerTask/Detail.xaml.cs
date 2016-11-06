@@ -1,19 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Microsoft.Win32;
 using TimerTask.Unit;
 
@@ -36,6 +24,7 @@ namespace TimerTask
             {
                 Caption = Caption.Text,
                 Path = PathTextBox.Text,
+                Params = ParamsTextBox.Text,
                 Time = Time,
                 Note = NoteTextBox.Text
             }; }
@@ -48,11 +37,13 @@ namespace TimerTask
                 };
                 Caption.Text = value.Caption;
                 PathTextBox.Text = value.Path;
+                ParamsTextBox.Text = value.Params;
                 Time = value.Time;
                 NoteTextBox.Text = value.Note;
+                if (value.IsReadOnly) PathTextBox.IsEnabled = false;
             }
         }
-
+        
         public new string Name
         {
             get { return Title; }
@@ -73,7 +64,7 @@ namespace TimerTask
                 DayBlock.Text = value.Day.ToString();
 
                 HourBlock.Text = value.Hour.ToString();
-                MinuteBlock.Text = value.Hour.ToString();
+                MinuteBlock.Text = value.Minute.ToString();
             }
         }
 
@@ -86,10 +77,9 @@ namespace TimerTask
             }
         }
 
-
-
         private void PathTextBox_OnLostFocus(object sender, RoutedEventArgs routedEventArgs)
         {
+            return;
             if (PathTextBox.Text.EndsWith(".exe") == false)
             {
                 MessageBox.Show("执行路径无效");

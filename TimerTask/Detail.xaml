@@ -82,8 +82,7 @@
                 <TextBox x:Name="ParamsTextBox"
                          Margin="10,0"
                          VerticalContentAlignment="Center"
-                         LostFocus="PathTextBox_OnLostFocus"
-                         MouseDoubleClick="PathTextBox_OnMouseDoubleClick" />
+                         LostFocus="PathTextBox_OnLostFocus" />
             </DockPanel>
             <Label Content="说明:" />
             <TextBox x:Name="NoteTextBox"

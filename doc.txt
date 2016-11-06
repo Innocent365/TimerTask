@@ -1,0 +1,6 @@
+1.程序启动时，检测任务池
+	 不存在，则不执行任何操作
+	 存在，找到下一个要执行的任务, 启动线程assit，一直在阻塞，或者sleep一定时间，启动执行任务线程back
+	 
+	 assit检测到back完成（running or completed），assit执行清理，通知主线程进行初始化，并结束当前线程assit
+	 

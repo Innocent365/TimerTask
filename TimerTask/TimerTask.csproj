@@ -56,7 +56,9 @@
     <Compile Include="Detail.xaml.cs">
       <DependentUpon>Detail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Run.cs" />
     <Compile Include="Unit\Unit.cs" />
+    <Compile Include="Util.cs" />
     <Page Include="Detail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

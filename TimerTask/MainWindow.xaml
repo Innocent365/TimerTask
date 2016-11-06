@@ -16,9 +16,7 @@
         <Menu VerticalAlignment="Top" VerticalContentAlignment="Top">
             <MenuItem x:Name="AddNewItem"
                       Header="新建"
-                      ItemsSource="{Binding ThemeMenuItemStyle}"
-                      MouseLeave="AddNewTask_OnMouseLeave"
-                      MouseUp="AddNewTask_OnMouseUp">
+                      ItemsSource="{Binding ThemeMenuItemStyle}">
                 <MenuItem Header="关机" />
                 <MenuItem Header="重启" />
                 <MenuItem Header="休眠" />
@@ -28,6 +26,7 @@
             <MenuItem Margin="160,0,0,0" Header="删除" />
             <MenuItem Header="暂停所有" />
             <MenuItem Margin="10,0,40,0" Header="退出程序" />
+            <MenuItem Header="查看历史" />
             <MenuItem Header="隐藏" />
         </Menu>
         <StackPanel Grid.Row="1">

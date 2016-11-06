@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -68,21 +67,7 @@ namespace TimerTask.Unit
 
         private void RunNowBtn_Click(object sender, RoutedEventArgs e)
         {
-            var appName = _unit.Path;
-
-            Process proc = null;
-            if (string.IsNullOrEmpty(appName))
-            {
-                MessageBox.Show("没有任务可以执行！");
-            }
-            else
-                proc = Process.Start(appName);
-
-            Process process = new Process(); 
-            ProcessStartInfo startInfo = new ProcessStartInfo(); 
-            startInfo.FileName = "cmd.exe";
-            startInfo.Arguments = "/C " + "shutdown -s -f";
-
+            var proc = _unit.RunProcess();            
             if (proc != null) Console.WriteLine(@"当前线程Id: " + proc.Id);
         }
     }
