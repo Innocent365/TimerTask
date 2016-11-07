@@ -25,19 +25,25 @@ namespace TimerTask
         private void OnLoad(object sender, RoutedEventArgs e)
         {
             InitMenuItems();
-            AssistThreadStartup();
+            TimerStartup();
         }
 
-        private void AssistThreadStartup()
+        private void TimerStartup()
         {
-            var task = ResetTaskLoop();
-            if(task==null) return;
+            var task = GetTask();
+            if(task == null) return;
 
-            _assistThread = new Thread(() => Start(task)) { IsBackground = true };
-            _backGroundThread.Start();
+            var z = task.Time - DateTime.Now;
+            _timer = new Timer(z.TotalMilliseconds);
+            _timer.Elapsed += (sender, args) =>
+            {
+                var thread = new Thread(() => StartProcess(task));
+                thread.IsBackground = true;
+                thread.Start();
+            };
+            _timer.Start();
         }
 
-        private int _count;
         private void Start(UnitInfo task)
         {
             //if(task.Time > )
@@ -51,8 +57,8 @@ namespace TimerTask
             //}
         }
 
-        private Thread _backGroundThread;//后台线程，专门负责执行任务
-        private Thread _assistThread;//辅助线程: 一直负责讲即将到来的任务交给后台线程，始终在执行
+        private Thread _backGroundThread;//后台线程，专门负责执行任务        
+        private Timer _timer;
 
         private void InitMenuItems()
         {
@@ -71,7 +77,7 @@ namespace TimerTask
             }
         }
 
-        private UnitInfo ResetTaskLoop()
+        private UnitInfo GetTask()
         {
             var array = ItemBox.Children.OfType<ItemMini>().ToArray();
             if (array.Any() == false) return null;
@@ -100,7 +106,8 @@ namespace TimerTask
 
         private void StartProcess(UnitInfo task)
         {
-            while (task != null && task.Status != TaskStatus.Completed)
+            if(task == null) return;
+            while (task.Status != TaskStatus.Completed)
             {
                 var now = DateTime.Now;
                 if (task.Status != TaskStatus.Ready && task.Time - now < new TimeSpan(60))
@@ -113,7 +120,8 @@ namespace TimerTask
                     task.RunProcess();
                 }
             }
-//            InitThread();
+
+            if (task.Status == TaskStatus.Completed) { }//TODO
         }
     }
 }
