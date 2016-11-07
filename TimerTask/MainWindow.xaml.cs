@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading;
 using System.Windows;
@@ -30,35 +31,47 @@ namespace TimerTask
 
         private void TimerStartup()
         {
-            var task = GetTask();
-            if(task == null) return;
+            _task = GetTask();
+            if (_task == null) return;
 
-            var z = task.Time - DateTime.Now;
+            var z = _task.Time - DateTime.Now;
             _timer = new Timer(z.TotalMilliseconds);
             _timer.Elapsed += (sender, args) =>
             {
-                var thread = new Thread(() => StartProcess(task));
-                thread.IsBackground = true;
-                thread.Start();
+                _backgroundWorker = new BackgroundWorker();
+                _backgroundWorker.DoWork += StartProcess;
+                _backgroundWorker.RunWorkerCompleted += (o, eventArgs) => { TimerLoop(); };
+                _backgroundWorker.RunWorkerAsync();
+            };
+            _timer.Start();
+            
+            _timer.AutoReset = false;
+        }
+
+        private void StartProcess(object sender, DoWorkEventArgs e)
+        {
+            StartProcess(_task);
+        }
+
+        private delegate void BackgroundWorkerDo(UnitInfo unit);
+
+        private void TimerLoop()
+        {
+            var task = GetTask();
+            if (task == null) return;
+
+            var z = task.Time - DateTime.Now;
+            _timer.Interval = z.TotalMilliseconds;
+            _timer.Elapsed += (sender, args) =>
+            {
+                _backgroundWorker.RunWorkerAsync();
             };
             _timer.Start();
         }
 
-        private void Start(UnitInfo task)
-        {
-            //if(task.Time > )
-            //Timer
-
-            return;
-            //_count = ItemBox.Children.OfType<ItemMini>().Count();
-            //while (_count > 0)
-            //{
-                
-            //}
-        }
-
-        private Thread _backGroundThread;//后台线程，专门负责执行任务        
-        private Timer _timer;
+        private BackgroundWorker _backgroundWorker;
+        private Timer _timer = new Timer{AutoReset = false};
+        private UnitInfo _task;
 
         private void InitMenuItems()
         {
@@ -100,8 +113,7 @@ namespace TimerTask
                 ItemBox.Children.Add(item);
                 item.SetOrder(ItemBox.Children.Count);
             }
-
-//            InitThread();
+            TimerStartup();
         }
 
         private void StartProcess(UnitInfo task)
@@ -120,8 +132,6 @@ namespace TimerTask
                     task.RunProcess();
                 }
             }
-
-            if (task.Status == TaskStatus.Completed) { }//TODO
         }
     }
 }
