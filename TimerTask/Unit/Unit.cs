@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace TimerTask.Unit
 {    
-    public class UnitInfo
+    public class TaskItem
     {
         public string Caption { get; set; }
         public string Path { get; set; }

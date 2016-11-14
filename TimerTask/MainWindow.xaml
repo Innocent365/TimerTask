@@ -3,16 +3,29 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
         Title="Command"
         Width="525"
         Height="350"
         Background="AliceBlue"
+        Icon="icon.ico"
         mc:Ignorable="d">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <StackPanel x:Name="MainPanel">
+        <tb:TaskbarIcon x:Name="Taskbar"
+                        IconSource="/TimerTask;component/icon.ico"
+                        TrayLeftMouseUp="Taskbar_OnTrayLeftMouseUp">
+            <!--  TrayRightMouseUp="Taskbar_OnTrayRightMouseUp"  -->
+            <tb:TaskbarIcon.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Click="PauseMenuItem_OnClick"
+                              Header="暂停"
+                              IsCheckable="True" />
+                    <MenuItem Click="ExitMenuItem_OnClick"
+                              Header="退出"
+                              Icon="{Binding exit.ico}" />
+                </ContextMenu>
+            </tb:TaskbarIcon.ContextMenu>
+        </tb:TaskbarIcon>
         <Menu VerticalAlignment="Top" VerticalContentAlignment="Top">
             <MenuItem x:Name="AddNewItem"
                       Header="新建"
@@ -25,15 +38,14 @@
             </MenuItem>
             <MenuItem Margin="160,0,0,0" Header="删除" />
             <MenuItem Header="暂停所有" />
-            <MenuItem Margin="10,0,40,0" Header="退出程序" />
             <MenuItem Header="查看历史" />
             <MenuItem Header="隐藏" />
         </Menu>
-        <StackPanel Grid.Row="1">
+        <StackPanel>
             <ScrollViewer MaxHeight="260" VerticalScrollBarVisibility="Auto">
                 <StackPanel x:Name="ItemBox" />
             </ScrollViewer>
         </StackPanel>
-    </Grid>
+    </StackPanel>
 
 </Window>
