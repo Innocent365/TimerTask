@@ -49,6 +49,10 @@ D:\Users\ss\Documents\Visual Studio 2013\Projects\HandleComputer\TimerTask\obj\D
 D:\Users\ss\Documents\Visual Studio 2013\Projects\HandleComputer\TimerTask\obj\Debug\TimerTask.Properties.Resources.resources
 D:\Users\ss\Documents\Visual Studio 2013\Projects\HandleComputer\TimerTask\obj\Debug\TimerTask.csproj.GenerateResource.Cache
 D:\Users\ss\Documents\Visual Studio 2013\Projects\HandleComputer\TimerTask\obj\Debug\TimerTask.csprojResolveAssemblyReference.cache
+<<<<<<< HEAD
+=======
+D:\Users\ss\Documents\Visual Studio 2013\Projects\HandleComputer\TimerTask\bin\Debug\WPFTaskbarNotifier.dll
+>>>>>>> 8c524f18f6998db6926257686b7dc59e4d06b8f0
 D:\Users\hw\Documents\Visual Studio 2013\Projects\HandleComputer\TimerTask\bin\Debug\TimerTask.exe.config
 D:\Users\hw\Documents\Visual Studio 2013\Projects\HandleComputer\TimerTask\obj\Debug\TimerTask.exe
 D:\Users\hw\Documents\Visual Studio 2013\Projects\HandleComputer\TimerTask\obj\Debug\TimerTask.pdb

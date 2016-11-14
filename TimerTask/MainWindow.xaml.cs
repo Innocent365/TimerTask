@@ -18,7 +18,8 @@ namespace TimerTask
         {
             InitializeComponent();
             InitMenuItems();
-            AutoOpen();
+
+            //AutoOpen();
 
             Taskbar.MenuActivation = PopupActivationMode.RightClick;
             
@@ -38,7 +39,6 @@ namespace TimerTask
         }
 
         private readonly BackgroundPoller _backgroundPoller;
-
         public void AutoOpen()//开机自启动：存在bug
         {
             //获取程序执行路径..  
