@@ -15,7 +15,7 @@ namespace TimerTask
     {
         public App()
         {
-            OpenSingleWindow();
+            //OpenSingleWindow();
         }
         private void OpenSingleWindow()
         {

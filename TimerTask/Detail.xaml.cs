@@ -12,15 +12,15 @@ namespace TimerTask
     /// </summary>
     public partial class Detail
     {
-        public Detail(UnitInfo unit=null)
+        public Detail(TaskItem unit=null)
         {
             InitializeComponent();
             Unit = unit;
         }
 
-        public UnitInfo Unit
+        public TaskItem Unit
         {
-            get { return new UnitInfo
+            get { return new TaskItem
             {
                 Caption = Caption.Text,
                 Path = PathTextBox.Text,
@@ -30,15 +30,11 @@ namespace TimerTask
             }; }
             set
             {
-                if (value == null)
-                {
-                    Time = DateTime.Now;
-                    return;
-                };
+                if(value==null) return;
+                Time = value.IsReadOnly ? DateTime.Now.Add(TimeSpan.FromMinutes(0.8)) : value.Time;
                 Caption.Text = value.Caption;
                 PathTextBox.Text = value.Path;
                 ParamsTextBox.Text = value.Params;
-                Time = value.Time;
                 NoteTextBox.Text = value.Note;
                 if (value.IsReadOnly) PathTextBox.IsEnabled = false;
             }

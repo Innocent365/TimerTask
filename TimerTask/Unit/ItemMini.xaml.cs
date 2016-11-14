@@ -16,8 +16,8 @@ namespace TimerTask.Unit
             InitializeComponent();
         }
 
-        private UnitInfo _unit;
-        public UnitInfo Unit
+        private TaskItem _unit;
+        public TaskItem Unit
         {
             get { return _unit; }
             set
@@ -28,7 +28,7 @@ namespace TimerTask.Unit
             }
         }
 
-        public ItemMini(UnitInfo info):this()
+        public ItemMini(TaskItem info):this()
         {
             Unit = info;
         }
@@ -57,7 +57,7 @@ namespace TimerTask.Unit
 
         private void ItemMini_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var detail = new Detail(_unit) { Height = 200, Width = 600 };            
+            var detail = new Detail(_unit) { Height = 200, Width = 600 };
 
             if (detail.ShowDialog() == true)
             {
@@ -65,10 +65,24 @@ namespace TimerTask.Unit
             }
         }
 
+        public Action<ItemMini> RunMeNow;
         private void RunNowBtn_Click(object sender, RoutedEventArgs e)
         {
-            var proc = _unit.RunProcess();            
-            if (proc != null) Console.WriteLine(@"当前线程Id: " + proc.Id);
+            if (RequirePause != null) RunMeNow(this);
         }
+
+
+        public Action<ItemMini> RequirePause;
+        private void PauseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (RequirePause != null) RequirePause(this);
+        }
+
+        public Action<ItemMini> RmoveNow { get; set; }
+        private void RemoveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (RmoveNow != null) RmoveNow(this);
+        }
+
     }
 }
